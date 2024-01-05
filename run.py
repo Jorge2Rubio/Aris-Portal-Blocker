@@ -20,9 +20,9 @@ try:
 
 			print(f"Response status: {response.status_code}")
 			if('You are not allowed to log until' in response.text):
-				s = r'You are not allowed to log([^>]+>)'
+				s = r'You are not allowed to log([^>]*)\'\)</script>'
 				result = re.search(s, response.text)
-				print("Success! the student is blocked from the aris portal" + result.group(1).rstrip("')</script>"))
+				print("Success! the student is blocked from the aris portal" + result.group(1))
 	
 # except Exception as e:
 # 	print(e)
